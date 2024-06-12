@@ -12,7 +12,7 @@
             height: 100%;
             width: 100%;
         }
-        #background {
+        #background, #background2 {
             position: absolute;
             top: 0;
             left: 0;
@@ -20,17 +20,36 @@
             width: 100%;
             background-size: cover;
             background-position: center;
+            transition: opacity 1s ease-in-out;
+        }
+        #background2 {
+            opacity: 0;
         }
     </style>
 </head>
 <body>
     <div id="background"></div>
+    <div id="background2"></div>
     <script>
+        let currentBackground = 1;
+
         function setBackground() {
+            const nextBackground = currentBackground === 1 ? 2 : 1;
             const imageUrl = `https://picsum.photos/2560/1440?random=${Date.now()}`;
-            console.log('Changing background to:', imageUrl); // Log the URL to the console
-            document.getElementById('background').style.backgroundImage = `url(${imageUrl})`;
+
+            const nextElement = document.getElementById(`background${nextBackground}`);
+            const currentElement = document.getElementById(`background${currentBackground}`);
+            
+            const img = new Image();
+            img.onload = function() {
+                nextElement.style.backgroundImage = `url(${imageUrl})`;
+                nextElement.style.opacity = 1;
+                currentElement.style.opacity = 0;
+                currentBackground = nextBackground;
+            }
+            img.src = imageUrl;
         }
+
         setBackground();
         setInterval(setBackground, 60000); // Change every 60000 milliseconds (1 minute)
     </script>
