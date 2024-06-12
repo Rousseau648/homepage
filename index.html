@@ -28,6 +28,7 @@
     <script>
         function setBackground() {
             const imageUrl = `https://picsum.photos/2560/1440?random=${Date.now()}`;
+            console.log('Changing background to:', imageUrl); // Log the URL to the console
             document.getElementById('background').style.backgroundImage = `url(${imageUrl})`;
         }
         setBackground();
