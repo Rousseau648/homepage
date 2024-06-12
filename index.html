@@ -18,7 +18,6 @@
             left: 0;
             height: 100%;
             width: 100%;
-            background-image: url('https://picsum.photos/2560/1440');
             background-size: cover;
             background-position: center;
         }
@@ -26,5 +25,13 @@
 </head>
 <body>
     <div id="background"></div>
+    <script>
+        function setBackground() {
+            const imageUrl = `https://picsum.photos/2560/1440?random=${Date.now()}`;
+            document.getElementById('background').style.backgroundImage = `url(${imageUrl})`;
+        }
+        setBackground();
+        setInterval(setBackground, 60000); // Change every 60000 milliseconds (1 minute)
+    </script>
 </body>
 </html>
