@@ -11,6 +11,7 @@
             overflow: hidden;
             height: 100%;
             width: 100%;
+            background-color: black; /* Ajoutez cette ligne pour un fond noir initial */
         }
         .background {
             position: absolute;
@@ -51,7 +52,7 @@
         }
 
         setBackground();
-        setInterval(setBackground, 300000); // Change every 5 minutes
+        setInterval(setBackground, 60000); // Change every 60000 milliseconds (1 minute)
     </script>
 </body>
 </html>
